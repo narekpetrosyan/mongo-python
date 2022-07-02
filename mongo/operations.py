@@ -1,16 +1,18 @@
 from .mongo import _Mongo
 
+
 class Operations(_Mongo):
+    """CLass for operations"""
     def __init__(self):
         super().__init__()
         self.__mclient = self.get_client()
 
-
     def get_db_names(self):
+        """return all db names"""
         return self.__mclient.list_database_names()
 
-
     def get_db_by_name(self, name: str):
+        """return current db by name"""
         return self.__mclient[name]
 
 
@@ -32,12 +34,12 @@ class Operations(_Mongo):
 
 
     def find_all(self, collection):
-        found_docs = collection.find()
+        found_docs = collection.find() 
         return found_docs
-        
+
 
     def find_by_id(self, collection, id):
-        _id = _Mongo.toObjectId(id)
+        _id = _Mongo.to_object_id(id)
         found_doc = collection.find_one({"_id": _id})
         return found_doc
 

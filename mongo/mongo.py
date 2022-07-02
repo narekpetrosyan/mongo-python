@@ -1,3 +1,4 @@
+"""MongoDB module."""
 import os
 from pymongo import MongoClient
 from bson.objectid import ObjectId
@@ -20,7 +21,7 @@ class _Mongo:
     def get_client(self):
         return self.__client
 
-    # @staticmethod
     # static method
-    def toObjectId(id):
+    @staticmethod
+    def to_object_id(id):
         return ObjectId(id)
